@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="admin_panel">
+<head>
+  <title>Taskmanager admin</title>
+  <%= stylesheet_link_tag    'admin', media: 'all' %>
+  <%= javascript_include_tag 'admin' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= javascript_tag do %>
+  var siteUrl = "<%=j @site_url %>";
+<% end %>
+  <div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a ng-click="logout()">Sign out</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div ng-view>
+  </div>
+</body>
+</html>
+

@@ -1,7 +1,22 @@
 Rails.application.routes.draw do
-  root to: 'site#index'
 
-  devise_for :users
+  authenticate :user do
+    get 'admin'  => 'admin#index'
+    get 'user'  =>  'user#read'
+  end
+
+  authenticated :user do
+    root to: 'admin#index', as: 'admin_index'
+  end
+
+  unauthenticated :user do
+    root to: 'site#index', as: 'unauthenticated'
+  end
+
+  root 'site#index'
+
+  devise_for :users, :controllers => { registrations: 'registration', sessions: 'session' }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

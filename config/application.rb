@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Vagrant
   class Application < Rails::Application
+
+    config.site_url = 'http://sztprojekt-taskmanager.herokuapp.com/'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
