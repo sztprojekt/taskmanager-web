@@ -29,7 +29,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
-    bcrypt (3.1.7)
+    bcrypt (3.1.9)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
@@ -48,10 +48,10 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
-    execjs (2.2.1)
+    execjs (2.2.2)
     hike (1.2.3)
     i18n (0.6.11)
-    jbuilder (2.2.2)
+    jbuilder (2.2.4)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.2)
@@ -60,7 +60,7 @@ GEM
     json (1.8.1)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
-    mime-types (2.4.1)
+    mime-types (2.4.3)
     minitest (5.4.2)
     multi_json (1.10.1)
     orm_adapter (0.5.0)
@@ -136,6 +136,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
   devise
