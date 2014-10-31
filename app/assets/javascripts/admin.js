@@ -31,6 +31,6 @@ var app = angular.module('admin_panel', ['ngRoute'])
 
 app.controller('DashboardCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get('/user').success(function(data){
-        $scope.user = data.data.user;
+       // $scope.user = data.data.user;
     });
 }]);
