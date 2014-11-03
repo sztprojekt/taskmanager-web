@@ -1,14 +1,11 @@
 default: &default
-  adapter: postgresql
+  adapter: sqlite3
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  database: vagrant
-  username: vagrant
-  password: vagrant
-  port: 5432
+  database: db/vagrant.db  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

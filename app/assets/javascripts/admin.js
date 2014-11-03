@@ -9,11 +9,17 @@ var app = angular.module('admin_panel', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider){
         $routeProvider
         .when('/', {
-            redirectTo: '/dashboard',
+            redirectTo: '/dashboard'
         })
         .when('/dashboard', {
             templateUrl: moduleUrl + '/templates/dashboard.html',
             controller: 'DashboardCtrl'
+        }).when('/tasks', {
+           templateUrl: moduleUrl + '/templates/Tasks.html',
+           controller: 'TasksCtrl'
+        }).when('/tasks/manage',{
+            templateUrl: moduleUrl + '/templates/TasksManage.html',
+            controller: 'TasksManageCtrl'
         })
         .otherwise({
             redirectTo: '/'
@@ -31,6 +37,22 @@ var app = angular.module('admin_panel', ['ngRoute'])
 
 app.controller('DashboardCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get('/user').success(function(data){
-       // $scope.user = data.data.user;
+        $scope.user = data.data.user;
+        console.log(data);
     });
+}]);
+
+app.controller('TasksManageCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.save = function(task, user) {
+        console.log(task);
+    };
+}]);
+
+app.controller('TasksCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.tasks = [{
+        name: "Task1",
+        user: "Barnika",
+        assigned_at: "Okt 11",
+        completed_at: "Okt 22"
+    }];
 }]);
