@@ -11,8 +11,13 @@ Rails.application.routes.draw do
 
   unauthenticated :user do
     root to: 'site#index', as: 'unauthenticated'
-    post 'api/login' => 'api#login'
   end
+
+  post 'api/login' => 'api#login'
+
+  get 'api/tasks' => 'task_api#all'
+  get 'api/task' => 'task_api#one'
+  put 'api/task' => 'task_api#update_status'
 
   root 'site#index'
 
