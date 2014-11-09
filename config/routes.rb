@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root to: 'admin#index', as: 'admin_index'
+    get 'tasks' => 'task#index'
+    post 'task' => 'task#create'
+    get 'task' => 'task#read'
+    put 'task' => 'task#update'
+    delete 'task' => 'task#delete'
   end
 
   unauthenticated :user do

@@ -24,7 +24,9 @@ class TaskApiController < ApiController
     end
     task = Task.find_by(id: id, user_id: @user.id)
     return die 'Task not found' if task.nil?
-    Task.update(task.id, status: (status.to_i == 1))
+    status = (status.to_i == 1)
+    completed_at = status ? Time.now : nil
+    Task.update(task.id, status: status, completed_at: completed_at)
     success 'Task updated successully'
   end
 
