@@ -35,6 +35,7 @@ var app = angular.module('admin_panel', ['ngRoute'])
         };
     }]);
 
+
 app.factory('TaskService', ['$http',function($http) {
     return {
         get: function(taskID) {
@@ -58,6 +59,7 @@ app.controller('DashboardCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(data);
     });
 }]);
+
 
 app.controller('TasksManageCtrl', ['$scope', '$location','$routeParams', 'TaskService', function($scope,$location,$routeParams,TaskService) {
     var taskID  = $routeParams.taskID;
