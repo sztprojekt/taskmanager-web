@@ -42,9 +42,10 @@ app.controller('DashboardCtrl', ['$scope', '$http', function($scope, $http) {
     });
 }]);
 
-app.controller('TasksManageCtrl', ['$scope', '$http', function($scope, $http) {
+app.controller('TasksManageCtrl', ['$scope', '$http','$location', function($scope, $http,$location) {
     $scope.save = function(task, user) {
         console.log(task);
+        $location.path("/tasks");
     };
 }]);
 
