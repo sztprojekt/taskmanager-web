@@ -1,0 +1,24 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1065" measuredH="316" mockupW="381" mockupH="192">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TextInput" x="684" y="184" w="381" h="-1" measuredW="76" measuredH="27" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Username</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::TextInput" x="684" y="233" w="381" h="-1" measuredW="70" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Password</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="684" y="289" w="-1" h="-1" measuredW="65" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Sign%20In</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Title" x="684" y="124" w="-1" h="-1" measuredW="381" measuredH="43" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Task%20manager%20admin</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
