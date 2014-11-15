@@ -15,9 +15,15 @@ class ApplicationController < ActionController::Base
   end
 
   def respond_with_data(data)
-    respond_to do |format|
-      format.json  { render json: {data: data}, status: 200 }
-    end
+    render json: {data: data}, status: 200
+  end
+
+  def success(message)
+    render json: {message: message}, status: 200
+  end
+
+  def die(message)
+    render json: {message: message}, status: 400
   end
 
 end
