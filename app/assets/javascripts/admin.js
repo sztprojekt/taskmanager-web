@@ -17,7 +17,7 @@ var app = angular.module('admin_panel', ['ngRoute'])
         }).when('/tasks', {
            templateUrl: moduleUrl + '/templates/Tasks.html',
            controller: 'TasksCtrl'
-        }).when('/tasks/manage/:taskID?',{
+        }).when('/tasks/manage',{
             templateUrl: moduleUrl + '/templates/TasksManage.html',
             controller: 'TasksManageCtrl'
         })
@@ -35,24 +35,6 @@ var app = angular.module('admin_panel', ['ngRoute'])
         };
     }]);
 
-
-app.factory('TaskService', ['$http',function($http) {
-    return {
-        get: function(taskID) {
-            return $http.get((taskID > 0) ? "/task/" + taskID : "/tasks");
-        },
-        create: function(task) {
-            return $http.post("/task", task);
-        },
-        update: function(task) {
-            return $http.put("/task",task);
-        },
-        deleteTask: function(taskID) {
-            return $http.delete("/task/" + taskID);
-        }
-    };
-}]);
-
 app.controller('DashboardCtrl', ['$scope', '$http', function($scope, $http) {
     $http.get('/user').success(function(data){
         $scope.user = data.data.user;
@@ -60,35 +42,18 @@ app.controller('DashboardCtrl', ['$scope', '$http', function($scope, $http) {
     });
 }]);
 
-
-app.controller('TasksManageCtrl', ['$scope', '$location','$routeParams', 'TaskService', function($scope,$location,$routeParams,TaskService) {
-    var taskID  = $routeParams.taskID;
-
-    if(taskID)
-        TaskService.get(taskID).success(function(response) {
-            $scope.task = response.data.task;
-        });
-
-    $scope.save = function(task) {
-        if (taskID > 0)
-            TaskService.update(task).success(function(response){
-                $location.path("/tasks");
-            });
-        else
-            TaskService.create(task).success(function(response){
-                $location.path("/tasks");
-            });
+app.controller('TasksManageCtrl', ['$scope', '$http','$location', function($scope, $http,$location) {
+    $scope.save = function(task, user) {
+        console.log(task);
+        $location.path("/tasks");
     };
 }]);
 
-app.controller('TasksCtrl', ['$scope','TaskService','$route', function($scope,TaskService,$route) {
-    TaskService.get(null).success(function(response) {
-        $scope.tasks = response.data.tasks;
-    });
-
-    $scope.delete = function(taskID) {
-        TaskService.deleteTask(taskID).success(function(response) {
-            $route.reload();
-        });
-    };
+app.controller('TasksCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.tasks = [{
+        name: "Task1",
+        user: "Barnika",
+        assigned_at: "Okt 11",
+        completed_at: "Okt 22"
+    }];
 }]);
