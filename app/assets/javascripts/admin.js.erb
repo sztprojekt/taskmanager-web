@@ -1,5 +1,8 @@
 //= require angular
 //= require angular-route
+//= depend_on_asset templates/dashboard.html
+//= depend_on_asset templates/Tasks.html
+//= depend_on_asset templates/TasksManage.html
 
 /*jslint browser: true*/ /*global  angular, $scope, $http */
 
@@ -12,14 +15,14 @@ var app = angular.module('admin_panel', ['ngRoute'])
             redirectTo: '/dashboard'
         })
         .when('/dashboard', {
-            templateUrl: moduleUrl + '/templates/dashboard.html',
+            templateUrl: '<%= asset_path('templates/dashboard.html') %>',
             controller: 'DashboardCtrl'
         }).when('/tasks', {
-           templateUrl: moduleUrl + '/templates/Tasks.html',
+           templateUrl: '<%= asset_path('templates/Tasks.html') %>',
            controller: 'TasksCtrl'
         }).when('/tasks/manage/:taskID?',{
-            templateUrl: moduleUrl + '/templates/TasksManage.html',
-            controller: 'TasksManageCtrl'
+           templateUrl: '<%= asset_path('templates/TasksManage.html') %>',
+           controller: 'TasksManageCtrl'
         })
         .otherwise({
             redirectTo: '/'
