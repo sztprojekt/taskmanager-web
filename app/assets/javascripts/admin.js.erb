@@ -1,5 +1,6 @@
 //= require angular
 //= require angular-route
+//= require ui-bootstrap-tpls-0.12.0.min
 //= depend_on_asset templates/dashboard.html
 //= depend_on_asset templates/Tasks.html
 //= depend_on_asset templates/TasksManage.html
@@ -8,7 +9,7 @@
 
 var moduleUrl = '/assets/';
 
-var app = angular.module('admin_panel', ['ngRoute'])
+var app = angular.module('admin_panel', ['ngRoute', 'ui.bootstrap'])
     .config(['$routeProvider', function ($routeProvider){
         $routeProvider
         .when('/', {
@@ -64,15 +65,29 @@ app.controller('DashboardCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
 
 
-app.controller('TasksManageCtrl', ['$scope', '$location','$routeParams', 'TaskService', function($scope,$location,$routeParams,TaskService) {
+app.controller('TasksManageCtrl', ['$scope', '$location','$routeParams', 'TaskService','$filter', function($scope,$location,$routeParams,TaskService,$filter) {
     var taskID  = $routeParams.taskID;
+    $scope.dueDate = new Date();
+    $scope.dueTime = new Date();
 
     if(taskID)
         TaskService.get(taskID).success(function(response) {
             $scope.task = response.data.task;
         });
 
+
+    $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+      //  console.log("Pista vagyok ");
+        $scope.opened = true;
+    };
     $scope.save = function(task) {
+       var dueDateFormated = $filter('date')($scope.dueDate,'yyyy-MM-dd');
+        var dueTimeFormated = $filter('date')($scope.dueTime,'ah:MM:ss');
+        task.due_date = dueDateFormated + ' ' + dueTimeFormated;
+
+
         if (taskID > 0)
             TaskService.update(task).success(function(response){
                 $location.path("/tasks");
