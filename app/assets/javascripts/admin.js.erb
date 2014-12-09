@@ -40,6 +40,7 @@ var app = angular.module('admin_panel', ['ngRoute', 'ui.bootstrap'])
     }]);
 
 
+
 app.factory('TaskService', ['$http',function($http) {
     return {
         get: function(taskID) {
@@ -79,7 +80,7 @@ app.controller('TasksManageCtrl', ['$scope', '$location','$routeParams', 'TaskSe
     $scope.open = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
-      //  console.log("Pista vagyok ");
+        console.log("Pista vagyok ");
         $scope.opened = true;
     };
     $scope.save = function(task) {
@@ -97,6 +98,10 @@ app.controller('TasksManageCtrl', ['$scope', '$location','$routeParams', 'TaskSe
                 $location.path("/tasks");
             });
     };
+    $scope.search = function(task){
+
+      console.log("Pista keres ");
+    }
 }]);
 
 app.controller('TasksCtrl', ['$scope','TaskService','$route', function($scope,TaskService,$route) {
