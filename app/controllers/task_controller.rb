@@ -52,4 +52,13 @@ class TaskController < ApplicationController
     success 'Task deleted successully'
   end
 
+  def complite
+    id = params[:task_id]
+    task = Task.find id
+    task
+    task.status = true
+    task.save
+    respond_with_data({task: task})
+  end
+
 end

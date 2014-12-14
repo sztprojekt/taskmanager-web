@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'task/(:id)' => 'task#read'
     put 'task' => 'task#update'
     delete 'task/:id' => 'task#delete'
+    put 'task/complete/:task_id' => 'task#complite'
   end
 
   unauthenticated :user do

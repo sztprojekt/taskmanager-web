@@ -54,6 +54,9 @@ app.factory('TaskService', ['$http',function($http) {
         },
         deleteTask: function(taskID) {
             return $http.delete("/task/" + taskID);
+        },
+        completeTask: function (taskId){
+            return $http.put("/task/complete/"+taskId);
         }
     };
 }]);
@@ -107,7 +110,17 @@ app.controller('TasksManageCtrl', ['$scope', '$location','$routeParams', 'TaskSe
 app.controller('TasksCtrl', ['$scope','TaskService','$route', function($scope,TaskService,$route) {
     TaskService.get(null).success(function(response) {
         $scope.tasks = response.data.tasks;
+        console.log(response);
     });
+
+    $scope.completeTask = function(id){
+        TaskService.completeTask(id).success(function(response){
+            console.log(response);
+        });
+
+
+    }
+
 
     $scope.delete = function(taskID) {
         TaskService.deleteTask(taskID).success(function(response) {
