@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109145859) do
+ActiveRecord::Schema.define(version: 20141216150130) do
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20141109145859) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "due_date"
+    t.string   "event_id"
+    t.integer  "sequence"
   end
 
   create_table "users", force: true do |t|
@@ -44,6 +46,8 @@ ActiveRecord::Schema.define(version: 20141109145859) do
     t.datetime "updated_at"
     t.integer  "role_id"
     t.string   "name"
+    t.string   "google_token"
+    t.integer  "google_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
