@@ -88,9 +88,8 @@ app.controller('TasksManageCtrl', ['$scope', '$location','$routeParams', 'TaskSe
     };
     $scope.save = function(task) {
        var dueDateFormated = $filter('date')($scope.dueDate,'yyyy-MM-dd');
-        var dueTimeFormated = $filter('date')($scope.dueTime,'ah:MM:ss');
+        var dueTimeFormated = $filter('date')($scope.dueTime,'HH:mm:ss');
         task.due_date = dueDateFormated + ' ' + dueTimeFormated;
-
 
         if (taskID > 0)
             TaskService.update(task).success(function(response){
@@ -103,7 +102,6 @@ app.controller('TasksManageCtrl', ['$scope', '$location','$routeParams', 'TaskSe
     };
     $scope.search = function(task){
 
-      console.log("Pista keres ");
     }
 }]);
 

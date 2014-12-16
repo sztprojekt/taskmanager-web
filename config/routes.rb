@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   unauthenticated :user do
     root to: 'site#index', as: 'unauthenticated'
     get '/yo'   =>  'yo#google'
-    get 'auth/:provider/callback' => 'yo#shiz'
+    get 'auth/:provider/callback' => 'auth#google_auth'
     get '/calendar'               => 'yo#calendar'
 
   end

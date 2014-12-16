@@ -1,5 +1,4 @@
 
-ruby '2.1.4'
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 

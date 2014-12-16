@@ -33,10 +33,10 @@ class YoController < ApplicationController
   end
 
   def calendar
-    user = User.find 5
+    user = User.find 12
 
     google_calendar_service = GoogleCalendarService.new user
-    task = Task.find 16
+    task = Task.find 19
 
     result = google_calendar_service.create_task task
     task.save

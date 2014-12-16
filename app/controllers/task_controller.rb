@@ -8,10 +8,16 @@ class TaskController < ApplicationController
     begin
       name = params.require :name
       due_date = params.require :due_date
+      # add_to_calendar = params[:add_to_calendar]
     rescue KeyError
       return die('Missing parameters')
     end
     task = current_user.tasks.create({ name: name, due_date: due_date })
+    unless current_user.google_token.nil?
+      google_calendar_service = GoogleCalendarService.new current_user
+      task = google_calendar_service.create_task task
+      task.save
+    end
     respond_with_data({task: task})
   end
 

@@ -9,9 +9,10 @@ class GoogleCalendarService
           'summary' => task.name,
           'description' => 'The description',
           'location' => 'Location',
-          'start' => { 'dateTime' => Time.now.utc.iso8601 },
-          'end' => { 'dateTime' => Time.now.utc.iso8601 }
+          'start' => { 'dateTime' =>  Time.parse(task.created_at.to_s).utc.iso8601 },
+          'end' => { 'dateTime' => Time.parse(task.due_date.to_s).utc.iso8601 }
     }
+
     result = @client.execute(:api_method => @calendar.events.insert,
                               :parameters => {'calendarId' => 'primary'},
                               :body => JSON.dump(formatted),
