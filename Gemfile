@@ -47,7 +47,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails_12factor', group: :production
 
 gem 'devise'
-gem 'rails-assets-bootstrap-sass-official'
+#gem 'rails-assets-bootstrap-sass-official'
 gem 'rails-assets-angular'
 gem 'rails-assets-angular-route'
 gem 'rails-assets-font-awesome'
