@@ -1,0 +1,32 @@
+<div class="well">
+    <h2 class="text-center">Manage Tasks</h2>
+    <form ng-submit="search(task)" class="well ">
+        <label>Search:</label>
+        <input type="text" ng-model="searchText" class="input-medium search-query form-control" placeholder="Search...">
+    </form>
+    <br>
+    <a class="btn btn-primary btn-lg pull-left" href="#/tasks/manage">Add Task</a>
+    <br /><br /><br />
+    <div class="table">
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Created At</th>
+                <th>Due Date</th>
+                <th>Completed</th>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="task in tasks | filter:searchText">
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.created_at }}</td>
+                    <td>{{ task.due_date }}</td>
+                    <td>{{ (task.status) ? task.completed_at : "" }} <input ng-click="completeTask(task.id)" ng-model="task.status" type="checkbox" class="col-md-8"></td>
+                    <td><a class="btn btn-primary" href="#/tasks/manage/{{ task.id }}">Edit</a></td>
+                    <td><a href="" ng-click="delete(task.id)" class="btn btn-danger" >Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
