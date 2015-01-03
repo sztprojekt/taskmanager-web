@@ -15,8 +15,6 @@ class AuthController < ApplicationController
       user.save
     end
 
-    uri = URI.parse(request.url)
-
     sign_in(:user, user)
     redirect_to Rails.application.config.site_url
   end

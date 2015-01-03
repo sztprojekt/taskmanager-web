@@ -7,6 +7,9 @@ class YoController < ApplicationController
     client.authorization.access_token = 'ya29.3QD4eEIF4Osf2IxsT6xV49sQJbeFdQTLAM6SnNV0a_Mdi26BoBayr7ZfXsJILk_xxP7MiFRUn5iz6Q'
     client.authorization.scope = 'userinfo.email, userinfo.profile, https://www.googleapis.com/auth/calendar'
     service = client.discovered_api('calendar', 'v3')
+
+
+
     @result = client.execute(
             :api_method => service.calendar_list.list,
             :parameters => {},

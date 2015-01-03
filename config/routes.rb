@@ -25,9 +25,10 @@ Rails.application.routes.draw do
 
   post 'api/login' => 'api#login'
 
-  get 'api/tasks' => 'task_api#all'
-  get 'api/task' => 'task_api#one'
-  put 'api/task' => 'task_api#update_status'
+  get 'api/tasks'         => 'task_api#all'
+  get 'api/task'          => 'task_api#one'
+  put 'api/task'          => 'task_api#update_status'
+  post 'api/google/auth'   => 'auth_api#google_auth'
 
   root 'site#index'
 
