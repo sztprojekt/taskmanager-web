@@ -5,7 +5,7 @@ class AuthApiController < ApplicationController
     client.authorization.client_id = '13601182052-hdcr783ne4a9430vgutb7bpionpe6npn.apps.googleusercontent.com'
     client.authorization.client_secret = 'G7-_znSUuPjXN-UORtKTwX-y'
     client.authorization.scope = 'userinfo.email, userinfo.profile, https://www.googleapis.com/auth/calendar'
-    client.authorization.redirect_uri = 'http://localhost/google/'
+    #client.authorization.redirect_uri = 'http://localhost/google/'
     client.authorization.code = params[:code]
     client.authorization.refresh_token = '1/7_SkRlmUV1w85lKfMW0_Ck-4TQo2966XEZuRfIhqPPYMEudVrK5jSpoR30zcRFq6'
     token = client.authorization.fetch_access_token!
