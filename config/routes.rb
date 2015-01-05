@@ -20,15 +20,17 @@ Rails.application.routes.draw do
     get '/yo'   =>  'yo#google'
     get 'auth/:provider/callback' => 'auth#google_auth'
     get '/calendar'               => 'yo#calendar'
-
   end
 
   post 'api/login' => 'api#login'
 
-  get 'api/tasks'         => 'task_api#all'
-  get 'api/task'          => 'task_api#one'
-  put 'api/task'          => 'task_api#update_status'
-  post 'api/google/auth'   => 'auth_api#google_auth'
+  get 'api/tasks'             => 'task_api#all'
+  get 'api/task/:id'          => 'task_api#one'
+  post 'api/task'             => 'task_api#create'
+  put 'api/task'              => 'task_api#update'
+  delete 'api/task/:id'           => 'task_api#delete'
+  put 'api/task/status'       => 'task_api#update_status'
+  post 'api/google/auth'      => 'auth_api#google_auth'
 
   root 'site#index'
 
